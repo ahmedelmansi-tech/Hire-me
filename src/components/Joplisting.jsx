@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaMapMarker } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Joplisting = ({ joplist }) => {
   const [toggleDescription, setToggleDescription] = useState(true);
@@ -38,12 +39,12 @@ const Joplisting = ({ joplist }) => {
             <FaMapMarker className="inline text-lg mr-1 mb-1" />
             {location}
           </div>
-          <a
-            href={`/jop/${id}`}
+          <Link
+            to={`/jops/${id}`}
             className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm"
           >
             Read More
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -22,10 +22,10 @@ const Navbar = () => {
                   <NavLink to="/" className={linkClass}>
                     Home
                   </NavLink>
-                  <NavLink to="/jobs" className={linkClass}>
+                  <NavLink to="/jops" className={linkClass}>
                     Jobs
                   </NavLink>
-                  <NavLink to="/add-job" className={linkClass}>
+                  <NavLink to="/add-jop" className={linkClass}>
                     Add Job
                   </NavLink>
                 </div>

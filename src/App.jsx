@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage";
 import JopsPage from "./pages/JopsPage";
 import AddJops from "./pages/AddJops";
 import NotFound from "./pages/NotFound";
+import SingleJop from "./pages/SingleJop";
 
 const App = () => {
   return (
@@ -11,8 +12,9 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/jobs" element={<JopsPage />} />
-        <Route path="/add-job" element={<AddJops />} />
+        <Route path="/jops" element={<JopsPage />} />
+        <Route path="/add-jop" element={<AddJops />} />
+        <Route path="/jops/:id" element={<SingleJop />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

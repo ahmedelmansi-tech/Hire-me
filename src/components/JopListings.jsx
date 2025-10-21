@@ -13,10 +13,9 @@ const JopListings = ({ isHome = true }) => {
         const res = await fetch("/api/jops");
         const data = await res.json();
         setJops(data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     };
 
