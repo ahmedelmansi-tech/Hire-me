@@ -1,6 +1,17 @@
-const Joplisting = ({ joplist }) => {
-  const { id, title, type, description, location, salary } = joplist;
+import { useState } from "react";
+import { FaMapMarker } from "react-icons/fa";
 
+const Joplisting = ({ joplist }) => {
+  const [toggleDescription, setToggleDescription] = useState(true);
+  let { id, title, type, description, location, salary } = joplist;
+
+  if (toggleDescription) {
+    description = description.substring(0, 90) + "...";
+  }
+
+  const handleShow = () => {
+    setToggleDescription((prevState) => !prevState);
+  };
   return (
     <div className="bg-white rounded-xl shadow-md relative">
       <div className="p-4">
@@ -11,13 +22,20 @@ const Joplisting = ({ joplist }) => {
 
         <div className="mb-5">{description}</div>
 
+        <button
+          onClick={handleShow}
+          className="text-indigo-500 mb-3 hover:text-indigo-300"
+        >
+          {toggleDescription ? "More" : "Less"}
+        </button>
+
         <h3 className="text-indigo-500 mb-2">{salary} / Year</h3>
 
         <div className="border border-gray-100 mb-5"></div>
 
         <div className="flex flex-col lg:flex-row justify-between mb-4">
           <div className="text-orange-700 mb-3">
-            <i className="fa-solid fa-location-dot text-lg"></i>
+            <FaMapMarker className="inline text-lg mr-1 mb-1" />
             {location}
           </div>
           <a

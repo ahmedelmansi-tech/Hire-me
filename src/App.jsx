@@ -1,15 +1,20 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import HomeCards from "./components/HomeCards";
-import JopListings from "./components/JopListings";
+import Homepage from "./pages/Homepage";
+import JopsPage from "./pages/JopsPage";
+import AddJops from "./pages/AddJops";
+import NotFound from "./pages/NotFound";
+
 const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <Hero />
-      <HomeCards />
-      <JopListings />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/jobs" element={<JopsPage />} />
+        <Route path="/add-job" element={<AddJops />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </BrowserRouter>
   );
 };
