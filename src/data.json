@@ -1,5 +1,5 @@
- { 
-  "jops":[
+{
+  "jops": [
     {
       "id": "1",
       "title": "Senior React Developer",
@@ -82,6 +82,20 @@
         "description": "Port Solutions is a leading technology company specializing in software development and digital marketing. We are committed to providing our clients with cutting-edge solutions and our employees with a supportive and rewarding work environment.",
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
+      }
+    },
+    {
+      "id": "d6838155-c559-4b68-a72a-29056faa4b3e",
+      "type": "Part-Time",
+      "title": "Full Stack ",
+      "description": "We are seeking a talented Front-End Developer to join our team in Boston, MA. The ideal candidate will have strong skills in HTML, CSS, and JavaScript,",
+      "location": "Canada",
+      "salary": "Under $50K",
+      "company": {
+        "name": "Canada Solutions",
+        "description": "Canda Solutions is a leading technology company specializing in web development and digital solutions",
+        "contactEmail": "ahmed.Ehaelmy@et.com",
+        "contactPhone": "01148569778"
       }
     }
   ]

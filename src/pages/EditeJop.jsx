@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { v4 as uuid4 } from "uuid";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-const AddJops = ({ addNewJop }) => {
+const EditeJop = ({ onEdite }) => {
+  const params = useParams();
   const navigate = useNavigate();
-
   const [title, setTitle] = useState("");
   const [type, setType] = useState("Full-Time");
   const [description, setDescription] = useState("");
@@ -15,11 +15,28 @@ const AddJops = ({ addNewJop }) => {
   const [camEmail, setCamEmail] = useState("");
   const [camPhone, setCamPhone] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    const editeData = async () => {
+      const getEditedJop = await fetch(`/api/jops/${params.id}`);
+      const data = await getEditedJop.json();
+      setTitle(data.title);
+      setType(data.type);
+      setDescription(data.description);
+      setLocation(data.location);
+      setSalary(data.salary);
+      setCamName(data.company.name);
+      setCamDescription(data.company.description);
+      setCamEmail(data.company.contactEmail);
+      setCamPhone(data.company.contactPhone);
+    };
+    editeData();
+  }, []);
 
-    const newJop = {
-      id: uuid4(),
+  //   Edite
+  const handleEdite = (e) => {
+    e.preventDefault();
+    const editedJop = {
+      id: params.id,
       type,
       title,
       description,
@@ -47,11 +64,10 @@ const AddJops = ({ addNewJop }) => {
       toast.error("Must Fill all the Fields");
       return;
     } else {
-      toast.success("Your jop has been added");
-      navigate("/jops");
+      toast.success("Your jop has been Edited");
+      navigate("/");
+      onEdite(editedJop);
     }
-
-    addNewJop(newJop);
   };
 
   return (
@@ -59,9 +75,11 @@ const AddJops = ({ addNewJop }) => {
       <section className="bg-indigo-50">
         <div className="container m-auto max-w-2xl py-24">
           <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleEdite}>
               <h2 className="text-3xl text-center font-semibold mb-6">
-                Add Job
+                <span>
+                  <FaEdit className="inline mb-2" /> Edite
+                </span>
               </h2>
 
               <div className="mb-4">
@@ -243,7 +261,7 @@ const AddJops = ({ addNewJop }) => {
                   className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                   type="submit"
                 >
-                  Add Job
+                  Submit Changes
                 </button>
               </div>
             </form>
@@ -254,4 +272,4 @@ const AddJops = ({ addNewJop }) => {
   );
 };
 
-export default AddJops;
+export default EditeJop;
